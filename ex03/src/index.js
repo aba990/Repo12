@@ -1,6 +1,9 @@
 function rangeOfNumbers(startN, endN){
-    if (startN > endN) {
-    return [];
+    if (startN - endN === 0) {
+    return [startN];
+    } else  if (startN > endN){
+        var string = "The starting number will always be less than or equal to the ending number";
+        return string;
     } else {
 	var myArr = rangeOfNumbers(startN, endN - 1);
     myArr.push(endN);
