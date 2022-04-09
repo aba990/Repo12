@@ -26,24 +26,23 @@ var contacts = [
     ];
     function lookUpProfile(name, prop){
     // Only change code below this line
-    for (var i = 0; i <=  contacts.length; i++) {
-        var contact = contacts[i];
-
-        if (contact.firstName === name) {
-            if (contact[prop] != undefined) {
-                return contact[prop];
-            }
-             return "No such property"
-            }
+    for (var x = 0; x < contacts.length; x++) {
+        if (contacts[x].firstName === name) {
+          if (contacts[x].hasOwnProperty(prop)) {
+            return contacts[x][prop];
+          } else {
+            return "No such property";
+          }
         }
+      }
+      return "No such contact";
     
-        return "No such contact";
 
     // Only change code above this line
 }
     console.log(lookUpProfile("John","likes"));
     console.log(lookUpProfile("Jane", "lastName"));
     console.log(lookUpProfile("Rob", "number"));
-   console.log(lookUpProfile("Rob", "JavaScript"));
-   console.log(lookUpProfile("John", "address"));
+    console.log(lookUpProfile("Rob", "JavaScript"));
+    console.log(lookUpProfile("John", "address"));
     module.exports = lookUpProfile;

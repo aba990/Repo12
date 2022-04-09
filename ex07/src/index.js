@@ -27,25 +27,35 @@ var collection = {
     var oldCollection = JSON.parse(JSON.stringify(collection));
     function updateRecords(object, id, prop, value) {
     // Only change code below this line
-      if(prop!=="tracks" && value!=='') {
-      object[id][prop] = value;
-    }
-    else if(prop==="tracks" && object[id][prop]===undefined) {
-      object[id][prop] = [];
-      object[id][prop].push(value);
-    }
-    else if(prop==="tracks" && value!=='') {
-      object[id][prop].push(value);
-    }
-    else if(value==='') {
+    if(value === '') {
+
       delete object[id][prop];
-    }
+      
+      } else if(prop === 'tracks') {
+      
+      if(object[id].hasOwnProperty(prop)) {
+      
+      object[id][prop].push(value);
+      
+      } else {
+      
+      object[id][prop] = [value];
+      
+      }
+      
+      } else {
+      
+      object[id][prop] = value;
+      
+      }
+      
       return object;
-    }
+
     // Only change code above this line
+    }
     console.log(updateRecords(collection, 5439, "artist", "ABBA")); 
     console.log(updateRecords(collection, 5439, "tracks", "Take a Chance on Me"));
     console.log(updateRecords(collection, 2548, "artist", ""));
     console.log(updateRecords(collection, 1245, "tracks", "Addicted to Love"));
     module.exports = updateRecords;
-    
+  
